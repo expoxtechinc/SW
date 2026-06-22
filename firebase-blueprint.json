@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "news": {
+      "title": "News",
+      "description": "Academics and school updates",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the article" },
+        "content": { "type": "string", "description": "Full content of the news post" },
+        "category": { "type": "string", "enum": ["General", "Academic", "TVET", "Sports", "Quiz Bowl"] },
+        "imageUrl": { "type": "string", "description": "Optional image URL for the post" },
+        "date": { "type": "string", "format": "date-time", "description": "Publish date" },
+        "author": { "type": "string", "description": "Author of the news post" }
+      },
+      "required": ["title", "content", "category", "date"]
+    },
+    "activities": {
+      "title": "Activity",
+      "description": "School events, photos, and extracurricular programs",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Activity name" },
+        "description": { "type": "string", "description": "Activity details" },
+        "imageUrl": { "type": "string", "description": "Image representing this activity" },
+        "date": { "type": "string", "format": "date-time", "description": "Event/activity date" },
+        "location": { "type": "string", "description": "Location description" }
+      },
+      "required": ["title", "description", "date"]
+    },
+    "quiz_questions": {
+      "title": "QuizQuestion",
+      "description": "Quiz bowl training database for STEM and Humanities",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string", "enum": ["Science (STEM)", "Math (STEM)", "Humanities", "History & Social Studies", "Literature"] },
+        "question": { "type": "string", "description": "The quiz bowl question text" },
+        "options": { "type": "array", "description": "Four multiple choice options" },
+        "answer": { "type": "string", "description": "The correct option matching" },
+        "explanation": { "type": "string", "description": "Explain why this answer is correct" }
+      },
+      "required": ["subject", "question", "options", "answer"]
+    },
+    "inquiries": {
+      "title": "Inquiry",
+      "description": "Contact and enrollment requests submitted by parents or prospective students",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the contact person" },
+        "email": { "type": "string", "description": "Email address" },
+        "phone": { "type": "string", "description": "Liberian contact number" },
+        "program": { "type": "string", "description": "Nursery, Junior High, Senior High, or a TVET course" },
+        "message": { "type": "string", "description": "Message text" },
+        "date": { "type": "string", "format": "date-time", "description": "Submission date" }
+      },
+      "required": ["name", "phone", "program", "message", "date"]
+    }
+  },
+  "firestore": {
+    "/news/{newsId}": {
+      "schema": "news",
+      "description": "School news and announcements"
+    },
+    "/activities/{activityId}": {
+      "schema": "activities",
+      "description": "School gallery events and activities"
+    },
+    "/quiz_questions/{questionId}": {
+      "schema": "quiz_questions",
+      "description": "Quiz bowl practice questions"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "inquiries",
+      "description": "Contact and admission inquiries"
+    }
+  }
+}

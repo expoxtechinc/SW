@@ -1,0 +1,8 @@
+{
+  "name": "Multee International School System",
+  "description": "Mobile educational portal and admin content management system for Multee International School System (MISS), Greenland Community, Johnsonville, Liberia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
